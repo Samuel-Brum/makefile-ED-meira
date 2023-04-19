@@ -14,8 +14,8 @@
 # |   |--arquivo1.o
 # |   |--arquivo2.o
 # |--include
-# |   |--arquivo1.h
-# |   |--arquivo2.h
+# |   |--arquivo1.hpp
+# |   |--arquivo2.hpp
 # |--Makefile
 # 
 # O projeto contará apenas com os arquivos .cpp e .h e os diretórios, o resto será gerado 
