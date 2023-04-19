@@ -23,7 +23,7 @@
 #
 # O Makefile funciona apenas para projetos em C++, para adaptá-lo para C
 # será necessário alterar as variávies CXX para um compilador como gcc ou 
-# clang e substituir todas as menções a .cpp para .c
+# clang e substituir todas as menções a .cpp para .c, assim como .hpp para .h
 # 
 # Caso isso for implementado, favor submeter pull request para atualizar o
 # repositório. (https://github.com/Samuel-Brum/makefile-ED-meira)
@@ -32,7 +32,7 @@
 CXX := g++
 CXXFLAGS := -Wall -c -Iinclude -pg -g
 
-HEADERS := $(wildcard include/*.h)
+HEADERS := $(wildcard include/*.hpp)
 SOURCES := $(wildcard src/*.cpp)
 OBJECTS := $(patsubst src/%.cpp, obj/%.o, $(SOURCES))
 
