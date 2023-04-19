@@ -18,7 +18,7 @@
 # |   |--arquivo2.hpp
 # |--Makefile
 # 
-# O projeto contará apenas com os arquivos .cpp e .h e os diretórios, o resto será gerado 
+# O projeto contará apenas com os arquivos .cpp e .hpp e os diretórios, o resto será gerado 
 # durante o processo de compilação.
 #
 # O Makefile funciona apenas para projetos em C++, para adaptá-lo para C
