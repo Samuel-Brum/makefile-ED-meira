@@ -18,7 +18,7 @@
 # |   |--arquivo2.h
 # |--Makefile
 # 
-# O projeto contará apenas com os arquivos .cpp e .h, o resto será gerado 
+# O projeto contará apenas com os arquivos .cpp e .h e os diretórios, o resto será gerado 
 # durante o processo de compilação.
 #
 # O Makefile funciona apenas para projetos em C++, para adaptá-lo para C
@@ -26,7 +26,7 @@
 # clang e substituir todas as menções a .cpp para .c
 # 
 # Caso isso for implementado, favor submeter pull request para atualizar o
-# repositório.
+# repositório. (https://github.com/Samuel-Brum/makefile-ED-meira)
 # -----------------------------------------------------------------------------
 
 CXX := g++
