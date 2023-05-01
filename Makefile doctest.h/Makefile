@@ -17,7 +17,7 @@
 # |   |--arquivo1.hpp
 # |   |--arquivo2.hpp
 # |--test
-# |-- |--tests.cpp
+# |-- |--testes.cpp
 # |--Makefile
 # 
 # O projeto contará apenas com os arquivos .cpp e .hpp e os diretórios,
@@ -45,23 +45,23 @@
 CXX := g++
 CXXFLAGS := -Wall -c -Iinclude -pg -g 
 
-HEADERS := $(wildcard include/*.hpp)
-SOURCES := $(wildcard src/*.cpp)
-OBJECTS := $(patsubst src/%.cpp, obj/%.o, $(SOURCES))
-TEST_SRC := $(wildcard test/*.cpp)
-TEST_OBJ := $(filter-out obj/main.o, $(OBJECTS))
-TEST_OBJ += $(patsubst test/src/%.o, obj/%.o, $(TEST_SRC))
+HEADERS := $(wildcard include/*.hpp) # arquivos .hpp em include
+SOURCES := $(wildcard src/*.cpp) # arquivos .cpp em src
+OBJECTS := $(patsubst src/%.cpp, obj/%.o, $(SOURCES)) # lista de targets .o
+TEST_SRC := $(wildcard test/*.cpp) # arquivos .cpp em test
+TEST_OBJ := $(filter-out obj/main.o, $(OBJECTS)) # OBJECTS menos main.o
+TEST_OBJ += $(patsubst test/src/%.cpp, obj/%.o, $(TEST_SRC))
 
-EXE := bin/nomeDoProjeto
-TEST_EXE := bin/tests
+EXE := bin/nomeDoProjeto # nome do executavel do projeto
+TEST_EXE := bin/testes # nome dos executavel de testes
 
-$(EXE): $(OBJECTS) $(HEADERS)
+$(EXE): $(OBJECTS) $(HEADERS) # Alvo do executavel do projeto
 	$(CXX) -o $(EXE) $(OBJECTS) 
 
-obj/%.o: src/%.cpp $(HEADERS)
+obj/%.o: src/%.cpp $(HEADERS) # Alvos dos arquivos .o intermediários
 	$(CXX) $(CXXFLAGS) $< -o $@
 
-$(TEST_EXE): $(TEST_OBJ) $(HEADERS)
+$(TEST_EXE): $(TEST_OBJ) $(HEADERS) # Alvo do executavel de testes
 	$(CXX) -Iinclude -o $(TEST_EXE) $(TEST_OBJ)
 
 all: $(EXE) $(TEST_EXE)
@@ -75,6 +75,6 @@ test: $(TEST_EXE)
 	$(TEST_EXE)
 
 clean:
-	rm -f $(EXE) $(TEST_EXE) obj/*.o
+	rm -f bin/* obj/*.o
 
 .PHONY: all run test clean
