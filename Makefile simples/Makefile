@@ -20,6 +20,9 @@
 # 
 # O projeto contará apenas com os arquivos .cpp e .hpp e os diretórios, o resto será gerado 
 # durante o processo de compilação.
+# UTILIZAÇÃO:
+#   - make run: compila e executa apenas o programa
+#   - make clean: remove binarios e arquivos objeto
 #
 # O Makefile funciona apenas para projetos em C++, para adaptá-lo para C
 # será necessário alterar as variávies CXX para um compilador como gcc ou 
@@ -32,21 +35,21 @@
 CXX := g++
 CXXFLAGS := -Wall -c -Iinclude -pg -g
 
-HEADERS := $(wildcard include/*.hpp)
-SOURCES := $(wildcard src/*.cpp)
-OBJECTS := $(patsubst src/%.cpp, obj/%.o, $(SOURCES))
+HEADERS := $(wildcard include/*.hpp) # arquivos .hpp em include
+SOURCES := $(wildcard src/*.cpp) # arquivos .cpp em src
+OBJECTS := $(patsubst src/%.cpp, obj/%.o, $(SOURCES)) # lista de targets .o
 
-PROJECT_NAME := nomeDoProjeto
-EXE := bin/$(PROJECT_NAME)
+PROJECT_NAME := nomeDoProjeto # nome do executavel do projeto
+EXE := bin/$(PROJECT_NAME) # nome dos executavel de testes
 
-$(EXE): $(OBJECTS) $(HEADERS)
+$(EXE): $(OBJECTS) $(HEADERS) # Alvo do executavel do projeto
 	$(CXX) -o bin/$(PROJECT_NAME) $(OBJECTS) 
 
-obj/%.o: src/%.cpp $(HEADERS)
+obj/%.o: src/%.cpp $(HEADERS) # Alvos dos arquivos .o intermediários
 	$(CXX) $(CXXFLAGS) $< -o $@
 
 run: $(EXE)
 	bin/$(PROJECT_NAME)
 
 clean:
-	rm -f bin/$(PROJECT_NAME) obj/*.o
+	rm -f bin/* obj/*.o
