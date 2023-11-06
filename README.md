@@ -30,9 +30,9 @@ Compilador automático para trabalhos do Meira que devem seguir a seguinte estru
  arquivo .cpp qualquer dentro da pasta "test". 
 
  # UTILIZAÇÃO:
-* make all: compila tanto testes quanto o programa
+* make all * : compila tanto testes quanto o programa
 * make run: compila e executa apenas o programa
-* make test: compila e executa apenas os testes
+* make test * : compila e executa apenas os testes
 * make clean: remove binarios e arquivos objeto
 
  O Makefile funciona apenas para projetos em C++, para adaptá-lo para C
@@ -41,3 +41,5 @@ Compilador automático para trabalhos do Meira que devem seguir a seguinte estru
  
  Caso isso for implementado, favor submeter pull request para atualizar o
  repositório. (https://github.com/Samuel-Brum/makefile-ED-meira)
+
+ <sub>* Somente para o makefile com testes</sub>
